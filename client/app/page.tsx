@@ -1,54 +1,44 @@
-import NextLink from "next/link";
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import Image from 'next/image'
 
-export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
+import { CustomFilter, Hero, RecordCard, SearchBar } from '@/components'
+import { fetchRecords } from '@/utils'
 
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					as={NextLink}
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					as={NextLink}
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
+export default async function Home() {
+  const allRecords = await fetchRecords()
 
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
-	);
+  const isDataEmpty = !Array.isArray(allRecords) || allRecords.length < 1 || !allRecords
+
+  console.log(allRecords)
+
+  return (
+    <main className="overflow-hidden">
+      <Hero />
+      <div className="mt-12 padding-x padding-y max-width" id="discover">
+        <div className="home__text-container">
+          <h1 className="text-4xl font-extrabold">Catalog</h1>
+          <p>Explore the library</p>
+        </div>
+        <div className="home__filters">
+          <SearchBar />
+          <div className="home__filter-container">
+            <CustomFilter title="title" />
+            <CustomFilter title="author" />
+          </div>
+        </div>
+        {!isDataEmpty ? (
+          <section>
+            <div className="home__records-wrapper">
+              {allRecords?.map((record) => (
+                <RecordCard record={record} />
+              ))}
+            </div>
+          </section>  
+        ) : (
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold">No records found...</h2>
+          </div>
+        )}
+      </div>
+    </main>
+  )
 }
