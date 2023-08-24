@@ -7,7 +7,7 @@ import { Combobox, Transition } from '@headlessui/react'
 import { recordTypes } from '@/constants';
 import { SearchRecordsProps } from '@/types'
 
-const SearchRecords = ({ records, setRecords }: SearchRecordsProps) => {
+const SearchRecords = ({ recordType, setRecordType }: SearchRecordsProps) => {
     
     const [searchTerm, setSearchTerm] = useState("")
     
@@ -21,20 +21,20 @@ const SearchRecords = ({ records, setRecords }: SearchRecordsProps) => {
 
     return (
     <div className="search-records">
-        <Combobox value={records} onChange={setRecords}>
+        <Combobox value={recordType} onChange={setRecordType}>
             <div className="relative w-full">
                 <Combobox.Button className="absolute top-[14px]">
                     <Image 
-                        src="/next.svg"
+                        src="/book.svg"
                         width={20}
                         height={20}
                         className="ml-4"
-                        alt="Car Logo"
+                        alt="Book Logo"
                     />
                 </Combobox.Button>
                 <Combobox.Input 
                     className="search-records__input" 
-                    placeholder="Search Records"
+                    placeholder="Record Type"
                     displayValue={(record: string) => record}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />

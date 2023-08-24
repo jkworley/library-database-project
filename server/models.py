@@ -11,8 +11,8 @@ class Record(BaseModel):
     publishedDate: str = Field(...)
     description: str = Field(...)
     pageCount: int = Field(...)
-    categories: list = Field(...)
-    imageLinks: object = Field(...)
+    category: str = Field(...)
+    imageLink: str = Field(...)
     googleBooksId: str = Field(...)
     recordType: str = Field(...)
 
@@ -30,13 +30,8 @@ class Record(BaseModel):
                 "publishedDate":"1979",
                 "description":"The Concerto for Bass Tuba and Orchestra was composed in 1953-4 to mark the 50th anniversary of the formation of the LSO and was written for the orchestra's principal tuba player, Philip Catelinet. It was the first major concerto to be written for the instrument, and remains today the outstanding work of its kind.",
                 "pageCount":80,
-                "categories":[
-                    "Concertos (Tuba)"
-                ],
-                "imageLinks":{
-                    "smallThumbnail":"http://books.google.com/books/content?id=vM4IAQAAMAAJ&printsec=frontcover&img=1&zoom=5&source=gbs_api",
-                    "thumbnail":"http://books.google.com/books/content?id=vM4IAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-                },
+                "categories":"Concertos (Tuba)",
+                "imageLink":"http://books.google.com/books/content?id=vM4IAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
                 "googleBooksId":"vM4IAQAAMAAJ",
                 "recordType":"Sheet Music"
             }

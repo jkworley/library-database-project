@@ -11,8 +11,8 @@ export interface CustomButtonProps {
 }
 
 export interface SearchRecordsProps {
-    records: string;
-    setRecords: (record: string) => void;
+    recordType: string;
+    setRecordType: (record: string) => void;
 }
 
 export interface RecordProps {
@@ -23,8 +23,18 @@ export interface RecordProps {
     publishedDate: string;
     description: string;
     pageCount: string;
-    categories: string[];
-    imageLinks: object;
+    category: string;
+    imageLink: string;
     googleBooksId: string;
     recordType: string;
+}
+
+export interface FilterProps {
+    recordType: string,
+    category: string,
+    year: number,
+}
+
+export interface HomeProps {
+    searchParams: FilterProps;
 }

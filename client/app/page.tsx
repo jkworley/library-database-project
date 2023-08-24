@@ -2,13 +2,18 @@ import Image from 'next/image'
 
 import { CustomFilter, Hero, RecordCard, SearchBar } from '@/components'
 import { fetchRecords } from '@/utils'
+import { HomeProps } from '@/types'
 
-export default async function Home() {
-  const allRecords = await fetchRecords()
-
-  const isDataEmpty = !Array.isArray(allRecords) || allRecords.length < 1 || !allRecords
+export default async function Home({ searchParams }: HomeProps) {
+  const allRecords = await fetchRecords({
+    recordType: searchParams.recordType || "",
+    category: searchParams.category || "",
+    year: searchParams.year || 2023,
+  })
 
   console.log(allRecords)
+
+  const isDataEmpty = !Array.isArray(allRecords) || allRecords.length < 1 || !allRecords
 
   return (
     <main className="overflow-hidden">

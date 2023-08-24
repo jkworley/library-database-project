@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Body, Request, Response, HTTPException, status
+from fastapi import APIRouter, Body, Request, Response, HTTPException, status, Query
 from fastapi.encoders import jsonable_encoder
 from typing import List
 
@@ -11,6 +11,14 @@ def list_records(request: Request):
     records = list(request.app.database["records"].find(limit=100))
     return records
 
+# @router.get("/search_records", response_description="Search all records", response_model=List[Record])
+# def search_records(recordType: str, category: str, request: Request):
+#     try:
+#         records = list(request.app.database["records"].find({"recordType": recordType, "category": category}))
+#         return {"record": records}
+#     except:
+#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Record with ID {id} not found")
+    
 @router.post("/", response_description="Create a new record", status_code=status.HTTP_201_CREATED, response_model=Record)
 def create_record(request: Request, record: Record = Body(...)):
     record = jsonable_encoder(record)

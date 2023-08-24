@@ -22,8 +22,8 @@ const RecordCard = ({ record }: RecordCardProps) => {
         publishedDate,
         description,
         pageCount,
-        categories,
-        imageLinks,
+        category,
+        imageLink,
         googleBooksId,
         recordType
     } = record
@@ -42,7 +42,7 @@ const RecordCard = ({ record }: RecordCardProps) => {
         </p>
         <div className="relative w-full h-60 my-3 object-contain">
             <Image 
-                src={imageLinks.thumbnail} 
+                src={imageLink} 
                 alt="record image" 
                 fill 
                 priority

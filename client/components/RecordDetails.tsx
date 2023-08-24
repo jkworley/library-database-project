@@ -57,7 +57,7 @@ const RecordDetails = ({ isOpen, closeModal, record }: RecordDetailsProps) => {
                                 <div className="flex-1 flex flex-col gap-3">
                                     <div className="relative w-full h-80 bg-pattern bg-cover bg-center rounded-lg">
                                         <Image 
-                                            src={record.imageLinks.thumbnail} 
+                                            src={record.imageLink} 
                                             alt="record image"  
                                             fill
                                             priority
@@ -93,7 +93,7 @@ const RecordDetails = ({ isOpen, closeModal, record }: RecordDetailsProps) => {
                                         </div>
                                         <div className="flex justify-between gap-5 w-full text-right" key={record.publisher}>
                                             <h4 className="text-grey">Categories</h4>
-                                            <p className="text-black-100 font-semibold">{record.categories}</p>
+                                            <p className="text-black-100 font-semibold">{record.category}</p>
                                         </div>
                                         <div className="flex justify-between gap-5 w-full text-right" key={record.recordType}>
                                             <h4 className="text-grey">Record Type</h4>
