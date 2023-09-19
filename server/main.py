@@ -7,6 +7,9 @@ from typing import List
 
 from models import Record
 
+# TO START SERVER
+# python -m uvicorn main:app --reload
+
 config = dotenv_values(".env")
 
 app = FastAPI()
@@ -31,15 +34,16 @@ def startup_db_client():
 def shutdown_db_client():
     app.mongodb_client.close()
 
-@app.get('/search_records/', response_description="List all records", response_model=List[Record])
-async def search_records(recordType: str, category: str):
-    try:
-        # Filter documents based on the 'category' field
-        filtered_records = list(app.database["records"].find({"recordType": recordType, "category": category}))
+# MOVED /SEARCH_RECORDS ROUTE TO routes.py
+# @app.get('/search_records/', response_description="List all records", response_model=List[Record])
+# async def search_records(recordType: str, category: str):
+#     try:
+#         # Filter documents based on the 'category' field
+#         filtered_records = list(app.database["records"].find({"recordType": recordType, "category": category}))
         
-        return filtered_records
+#         return filtered_records
     
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=str(e))
 
 app.include_router(book_router, tags=["records"], prefix="/records")

@@ -4,13 +4,13 @@ from pydantic import BaseModel, Field
 from bson import ObjectId
 
 class Record(BaseModel):
-    id: ObjectId = Field(default_factory=uuid.uuid4, alias="_id")
+    id: str = Field(default_factory=uuid.uuid4, alias="_id")
     title: str = Field(...)
-    authors: list = Field(...)
+    composer: str = Field(...)
     publisher: str = Field(...)
     publishedDate: str = Field(...)
     description: str = Field(...)
-    pageCount: int = Field(...)
+    pageCount: str = Field(...)
     category: str = Field(...)
     imageLink: str = Field(...)
     googleBooksId: str = Field(...)
@@ -23,9 +23,7 @@ class Record(BaseModel):
             "example": {
                 "_id":"64e4dedd87869470c6b53e6b",
                 "title":"Concerto for Bass Tuba and Orchestra",
-                "authors":[
-                    "Ralph Vaughan Williams"
-                ],
+                "composer":"Ralph Vaughan Williams",
                 "publisher":"Oxford University Press",
                 "publishedDate":"1979",
                 "description":"The Concerto for Bass Tuba and Orchestra was composed in 1953-4 to mark the 50th anniversary of the formation of the LSO and was written for the orchestra's principal tuba player, Philip Catelinet. It was the first major concerto to be written for the instrument, and remains today the outstanding work of its kind.",
@@ -46,8 +44,16 @@ class RecordUpdate(BaseModel):
     class Config:
         json_schema_extra = {
             "example": {
-                "title": "Don Quixote",
-                "author": "Miguel de Cervantes",
-                "synopsis": "Don Quixote is a Spanish novel by Miguel de Cervantes..."
+                "_id":"64e4dedd87869470c6b53e6b",
+                "title":"Concerto for Bass Tuba and Orchestra",
+                "composer":"Ralph Vaughan Williams",
+                "publisher":"Oxford University Press",
+                "publishedDate":"1979",
+                "description":"The Concerto for Bass Tuba and Orchestra was composed in 1953-4 to mark the 50th anniversary of the formation of the LSO and was written for the orchestra's principal tuba player, Philip Catelinet. It was the first major concerto to be written for the instrument, and remains today the outstanding work of its kind.",
+                "pageCount":80,
+                "categories":"Concertos (Tuba)",
+                "imageLink":"http://books.google.com/books/content?id=vM4IAQAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+                "googleBooksId":"vM4IAQAAMAAJ",
+                "recordType":"Sheet Music"
             }
         }

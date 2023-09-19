@@ -70,7 +70,7 @@ const RecordDetails = ({ isOpen, closeModal, record }: RecordDetailsProps) => {
                                         {record.title}
                                     </h2>
                                     <p>
-                                        {record.authors}
+                                        {record.composer}
                                     </p>
                                     <div className="mt-3 flex flex-wrap">
                                         {/* {Object.entries(record).map(([key, value]) => 
@@ -106,7 +106,6 @@ const RecordDetails = ({ isOpen, closeModal, record }: RecordDetailsProps) => {
                     </div>
                 </div>
             </Dialog>
-
         </Transition>
     </>
   )

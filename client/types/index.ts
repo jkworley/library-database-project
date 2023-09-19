@@ -16,9 +16,9 @@ export interface SearchRecordsProps {
 }
 
 export interface RecordProps {
-    id: string;
+    id?: string;
     title: string;
-    authors: string[];
+    composer: string;
     publisher: string;
     publishedDate: string;
     description: string;

@@ -11,22 +11,25 @@ def list_records(request: Request):
     records = list(request.app.database["records"].find(limit=100))
     return records
 
-# @router.get("/search_records", response_description="Search all records", response_model=List[Record])
-# def search_records(recordType: str, category: str, request: Request):
-#     try:
-#         records = list(request.app.database["records"].find({"recordType": recordType, "category": category}))
-#         return {"record": records}
-#     except:
-#         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Record with ID {id} not found")
+@router.get('/search_records', response_description="List all records", response_model=List[Record])
+async def search_records(recordType: str, category: str, request: Request):
+    try:
+        # Filter documents based on the 'category' field
+        filtered_records = list(request.app.database["records"].find({"recordType": recordType, "category": category}))
+        
+        return filtered_records
     
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e)) 
+   
 @router.post("/", response_description="Create a new record", status_code=status.HTTP_201_CREATED, response_model=Record)
 def create_record(request: Request, record: Record = Body(...)):
     record = jsonable_encoder(record)
     new_record = request.app.database["records"].insert_one(record)
+    print(new_record)
     created_record = request.app.database["records"].find_one(
         {"_id": new_record.inserted_id}
     )
-
     return created_record
 
 @router.get("/{id}", response_description="Get a single record by id", response_model=Record)

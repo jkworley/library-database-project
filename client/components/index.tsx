@@ -7,6 +7,7 @@ import CustomFilter from "./CustomFilter";
 import SearchRecords from "./SearchRecords";
 import RecordCard from "./RecordCard";
 import RecordDetails from "./RecordDetails";
+import CreateRecord from "../app/create-record/page";
 
 export {
     Hero,
@@ -17,5 +18,6 @@ export {
     CustomFilter,
     SearchRecords,
     RecordCard,
-    RecordDetails
+    RecordDetails,
+    CreateRecord
 }

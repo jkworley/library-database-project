@@ -8,18 +8,20 @@ const NavBar = () => {
         <nav className="max-w-[1440px] mx-auto flex justify-between items-center sm:px-16 py-4">
             <Link href="/" className="flex justify-center items-center">
                 <Image 
-                    src="/next.svg"
+                    src="/BWLogo.png"
                     alt="logo"
-                    width={118}
+                    width={200}
                     height={18}
                     className="object-contain"
                 />
             </Link>
-            <CustomButton 
-                title="Sign In"
-                btnType="button"
-                containerStyles="text-primary-blue rounded-full bg-white min-w-[130px"
-            />
+            <Link href="/create-record">
+                <CustomButton 
+                    title="Create New Record"
+                    btnType="button"
+                    containerStyles="text-primary-blue rounded-full bg-white min-w-[130px"
+                /> 
+            </Link>
         </nav>
     </header>
   )

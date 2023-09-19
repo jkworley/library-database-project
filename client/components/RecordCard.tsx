@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from 'react'
 import Image from 'next/image'
@@ -17,7 +17,7 @@ const RecordCard = ({ record }: RecordCardProps) => {
     const {
         id,
         title,
-        authors,
+        composer,
         publisher,
         publishedDate,
         description,
@@ -32,14 +32,16 @@ const RecordCard = ({ record }: RecordCardProps) => {
   
     return (
     <div className="record-card group">
-        <div className="record-card__content">
-            <h2 className="record-card__content-title">
-                {title}
-            </h2>
+        <div className="h-20">
+            <div className="record-card__content">
+                <h2 className="record-card__content-title">
+                    {title}
+                </h2>
+            </div>
+            <p>
+                {composer}
+            </p>
         </div>
-        <p>
-            {authors}
-        </p>
         <div className="relative w-full h-60 my-3 object-contain">
             <Image 
                 src={imageLink} 

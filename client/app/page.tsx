@@ -21,7 +21,6 @@ export default async function Home({ searchParams }: HomeProps) {
       <div className="mt-12 padding-x padding-y max-width" id="discover">
         <div className="home__text-container">
           <h1 className="text-4xl font-extrabold">Catalog</h1>
-          <p>Explore the library</p>
         </div>
         <div className="home__filters">
           <SearchBar />
@@ -40,7 +39,7 @@ export default async function Home({ searchParams }: HomeProps) {
           </section>  
         ) : (
           <div className="home__error-container">
-            <h2 className="text-black text-xl font-bold">No records found...</h2>
+            <h2 className="text-black text-xl font-bold">Search the database to view records...</h2>
           </div>
         )}
       </div>

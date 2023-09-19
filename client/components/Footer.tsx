@@ -10,14 +10,13 @@ const Footer = () => {
                 <div className="flex flex-col justify-start items-start gap-6">
                     <Link href="/" className="flex justify-center items-center">
                         <Image 
-                            src="/next.svg"
+                            src="/BWLogo.png"
                             alt="logo"
                             width={118}
                             height={18}
-                            className="object-contain"
+                            className="absolute mt-10 ml-20 object-contain"
                         />
                     </Link>
-                    <p className="text-base text-gray-700">Library Database</p>
                 </div>
                 <div className="footer__links">
                     {footerLinks.map((link) => (
