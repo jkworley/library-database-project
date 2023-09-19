@@ -12,7 +12,6 @@ Symphonic Storage is a full-stack application for keeping track or music-related
   - [Configuration](#configuration)
   - [Running the Application](#running-the-application)
 - [Folder Structure](#folder-structure)
-- [Deployment](#deployment)
 - [License](#license)
 
 ## Introduction
