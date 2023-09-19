@@ -38,8 +38,6 @@ List the software and tools required to run your application. For example:
 
 ## Getting Started
 
-Provide instructions for setting up and running your MERN application.
-
 ### Installation
 
 1. Clone the repository:
